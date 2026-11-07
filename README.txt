@@ -1,4 +1,4 @@
-QUEST CHAIN LITE 1.4.0
+QUEST CHAIN LITE 1.4.1
 World of Warcraft: Forever 1.60.1, interface 16001
 
 Install
