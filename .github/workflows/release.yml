@@ -1,0 +1,43 @@
+name: Release to CurseForge
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the tagged source
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Check the release version and upload token
+        shell: bash
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          toc_version="$(sed -n 's/^## Version: //p' QuestChainLite.toc | tr -d '\r')"
+          if [[ ! "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ || "$version" != "$toc_version" ]]; then
+            echo "::error::The release tag must match the addon version in QuestChainLite.toc."
+            exit 1
+          fi
+          if [[ -z "$CF_API_TOKEN" ]]; then
+            echo "::error::Add the CF_API_TOKEN repository secret before pushing a release tag."
+            exit 1
+          fi
+
+      - name: Package and upload to CurseForge
+        uses: BigWigsMods/packager@e50a250f8705041e40f2fa1ddcb280a686d65aa0 # v2.6.1
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        with:
+          args: -p 1788881
+          pandoc: 'false'
