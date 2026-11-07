@@ -1,7 +1,7 @@
 ## Interface: 16001
 ## Title: Quest Chain Lite
 ## Notes: Quest chain tooltips and a parchment list beside opened quests.
-## Version: 1.4.0
+## Version: 1.4.1
 ## OptionalDeps: QuestieDB, Questie
 ## IconTexture: Interface\AddOns\QuestChainLite\Icon.tga
 
