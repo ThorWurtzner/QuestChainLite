@@ -3,11 +3,11 @@ World of Warcraft: Forever 1.60.1, interface 16001
 
 Install
 
-1. Quit WoW: Forever.
-2. Extract the QuestChainLite folder into World of Warcraft\_forever_\Interface\AddOns.
+1. Extract the QuestChainLite folder into World of Warcraft\_forever_\Interface\AddOns.
    Replace the existing QuestChainLite files if you are updating.
    The resulting path should end in AddOns\QuestChainLite\QuestChainLite.toc.
-3. Start Forever and check Quest Chain Lite in the character screen's AddOns list.
+2. If you updated while logged in, type /reload in chat to load the update.
+3. Check that Quest Chain Lite is enabled in the AddOns list.
    Keep QuestieDB enabled if you have it. It comes with the current Forever Questie release.
 
 Use
